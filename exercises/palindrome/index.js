@@ -7,6 +7,20 @@
 //   palindrome("abba") === true
 //   palindrome("abcdefg") === false
 
-function palindrome(str) {}
+// function palindrome(str) {
+//   let newStr = "";
+//   for (let char of str) {
+//     newStr = char + newStr;
+//   }
+//   return newStr === str;
+// }
+
+// this solution is not efficient b/c it checks values twice,
+// but it uses .every ES6 helper
+function palindrom(str) {
+  return str.split("").every((char, i) => {
+    return char === str[str.length - i - 1];
+  });
+}
 
 module.exports = palindrome;
