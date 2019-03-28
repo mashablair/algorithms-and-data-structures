@@ -57,13 +57,13 @@
 //   return true;
 // }
 
-// easier solution but worse performance
+// easier solution!!
 // it uses array.sort()
 function anagrams(stringA, stringB) {
   return _cleanString(stringA) === _cleanString(stringB);
 }
 
-// helper func to clean up strings
+// helper func to clean up strings, turn them into array, sort and turn back into string
 function _cleanString(str) {
   return str
     .replace(/[^\w]/g, "")
