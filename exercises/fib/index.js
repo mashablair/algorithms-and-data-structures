@@ -8,6 +8,52 @@
 // Example:
 //   fib(4) === 3
 
-function fib(n) {}
+// // iterative solution
+// function fib(n) {
+//   const result = [0, 1];
+
+//   for (let i = 2; i <= n; i++) {
+//     result[i] = result[i - 2] + result[i - 1];
+//   }
+
+//   return result[n];
+// }
+// // runtime complexity is linear
+
+// // recursion solution
+// function fib(n) {
+//   if (n < 2) {
+//     return n;
+//   }
+//   return fib(n - 1) + fib(n - 2);
+// }
+// // runtime complexity is awful -- Exponential Time (2 ^ n)
+// // for each added item, much more work -- more functions to call
+
+// recursion solution IMPROVED for time complexity
+// MEMOIZATION!
+function memoize(fn) {
+  const cache = {};
+
+  return function(...args) {
+    if (cache[args]) {
+      return cache[args];
+    }
+
+    const result = fn.apply(this, args);
+    cache[args] = result;
+
+    return result;
+  };
+}
+
+function slowFib(n) {
+  if (n < 2) {
+    return n;
+  }
+  return fib(n - 1) + fib(n - 2);
+}
+
+const fib = memoize(slowFib);
 
 module.exports = fib;
