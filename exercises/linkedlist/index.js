@@ -50,12 +50,60 @@ class LinkedList {
       node = node.next;
     }
   }
+
+  clear() {
+    this.head = null;
+  }
+
+  removeFirst() {
+    if (!this.head) {
+      return;
+    }
+    this.head = this.head.next;
+  }
+
+  removeLast() {
+    let node = this.head;
+    let previous = null;
+
+    // if list is empty
+    if (!node) {
+      return;
+    }
+
+    // if only 1 Node
+    if (!node.next) {
+      this.head = null;
+      return;
+    }
+
+    // when more than 1 Node
+    while (node.next) {
+      previous = node;
+      node = node.next;
+    }
+
+    previous.next = null;
+  }
+
+  insertLast(data) {
+    const last = this.getLast();
+    if (last) {
+      last.next = new Node(data);
+    } else {
+      this.head = new Node(data);
+    }
+  }
 }
 
 const list = new LinkedList();
-list.insertFirst(5);
-list.insertFirst(20);
+list.insertFirst("red");
+list.insertFirst("blue");
+list.insertFirst("green");
 // list; // {"head":{"data":20,"next":{"data":5,"next":null}}}
 list.size();
 
-module.exports = { Node, LinkedList };
+module.exports = {
+  Node,
+  LinkedList
+};
