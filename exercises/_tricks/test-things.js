@@ -30,6 +30,7 @@ class LinkedList {
       node = node.next;
     }
 
+    console.log(`list size is ${counter}`);
     return counter;
   }
 
@@ -96,6 +97,10 @@ class LinkedList {
   }
 
   getAt(index) {
+    if (!this.head) {
+      return null;
+    }
+
     let counter = 0;
     let node = this.head;
 
@@ -107,9 +112,6 @@ class LinkedList {
       node = node.next;
       counter++;
     }
-
-    // if index > than list.size
-    return null;
   }
 }
 
@@ -120,8 +122,3 @@ list.insertFirst("green");
 // list; // {"head":{"data":20,"next":{"data":5,"next":null}}}
 list.size();
 // list.getAt(6);
-
-module.exports = {
-  Node,
-  LinkedList
-};
